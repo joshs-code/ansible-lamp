@@ -1,0 +1,28 @@
+---
+- name: Update System
+  when: ansible_distribution == 'Rocky'
+  yum:
+    name: '*'
+    state: latest
+    update_cache: yes
+
+- name: Firewall Open Port for Webserver
+  when: ansible_distribution == 'Rocky'
+  ansible.posix.firewalld:
+    service: http
+    state: enabled
+    permanent: true
+    immediate: true
+    offline: true
+
+- name: Install Apache Web Server
+  when: ansible_distribution == 'Rocky'
+  yum:
+    name: 'httpd'
+    state: present
+
+- name: start apache
+  ansible.builtin.service:
+    name: httpd 
+    state: started
+
