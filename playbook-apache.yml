@@ -1,6 +1,0 @@
----
-- name: Set Up Apache Webserver
-  hosts: webservers
-  become: yes
-  roles:
-    - apache

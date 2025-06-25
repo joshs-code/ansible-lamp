@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "controller", primary: true do |controller|
     controller.vm.hostname = "controller"
     controller.vm.network "private_network", ip: "192.168.56.10"
-    controller.vm.synced_folder "/home/joshua/Desktop/AnsibleProject/ProjectNginx/Vagrant", "/home/vagrant/project"
+    controller.vm.synced_folder "/home/joshua/Desktop/AnsibleProject/ProjectLAMP/Vagrant", "/home/vagrant/project"
 
     controller.vm.provision "shell", inline: <<-SHELL
       sudo dnf update

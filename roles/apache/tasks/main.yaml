@@ -1,11 +1,4 @@
 ---
-- name: Update System
-  when: ansible_distribution == 'Rocky'
-  yum:
-    name: '*'
-    state: latest
-    update_cache: yes
-
 - name: Firewall Open Port for Webserver
   when: ansible_distribution == 'Rocky'
   ansible.posix.firewalld:
@@ -19,7 +12,7 @@
   when: ansible_distribution == 'Rocky'
   yum:
     name: 'httpd'
-    state: present
+    state: latest
 
 - name: start apache
   ansible.builtin.service:
