@@ -11,6 +11,12 @@
   roles:
     - apache
 
+- name: Add PHP 
+  hosts: webservers
+  become: yes
+  roles:
+    - php
+
 - name: Setup MySQL
   hosts: dbservers
   become: yes
